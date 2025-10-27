@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Chemistry Music App Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono:wght@400&display=swap');
+
+@layer base {
+  :root {
+    /* Core Dark Theme */
+    --background: 220 20% 4%;
+    --foreground: 180 100% 90%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 220 20% 6%;
+    --popover-foreground: 180 100% 90%;
+
+    /* Chemistry Theme Colors */
+    --primary: 160 100% 50%;        /* Neon Green - Element glow */
+    --primary-foreground: 220 20% 4%;
+    
+    --secondary: 280 100% 60%;      /* Electric Purple */
+    --secondary-foreground: 180 100% 90%;
+
+    --accent: 200 100% 70%;         /* Cyan Math symbols */
+    --accent-foreground: 220 20% 4%;
+
+    /* Element Colors */
+    --element-hydrogen: 60 100% 70%;    /* Yellow */
+    --element-carbon: 120 60% 50%;      /* Green */
+    --element-oxygen: 0 100% 60%;       /* Red */
+    --element-nitrogen: 240 100% 70%;   /* Blue */
+    
+    /* Math Symbol Colors */
+    --math-primary: 200 100% 70%;       /* Cyan */
+    --math-secondary: 300 80% 60%;      /* Magenta */
+
+    /* UI States */
+    --muted: 220 20% 12%;
+    --muted-foreground: 180 50% 60%;
+    
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 180 100% 90%;
+
+    --border: 220 20% 15%;
+    --input: 220 20% 10%;
+    --ring: 160 100% 50%;
+
+    /* Special Effects */
+    --glow-primary: 160 100% 50%;
+    --glow-secondary: 280 100% 60%;
+    --particle-trail: 200 100% 70%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160 100% 50%), hsl(200 100% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(280 100% 60%), hsl(320 80% 50%));
+    --gradient-background: linear-gradient(180deg, hsl(220 20% 4%), hsl(220 30% 8%));
+    --gradient-player: linear-gradient(135deg, hsl(220 20% 6%) 0%, hsl(220 30% 10%) 100%);
+
+    /* Shadows & Glows */
+    --shadow-glow: 0 0 30px hsl(var(--glow-primary) / 0.5);
+    --shadow-element: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-math: 0 0 15px hsl(var(--accent) / 0.4);
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-tech;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+  
+  /* Futuristic Typography */
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .font-tech {
+    font-family: 'Share Tech Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Element Styling */
+  .element {
+    @apply inline-block px-1 py-0.5 rounded text-xs font-bold;
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.5);
+    box-shadow: var(--shadow-element);
+    text-shadow: 0 0 5px hsl(var(--primary) / 0.8);
+  }
+  
+  .element-h { 
+    background: hsl(var(--element-hydrogen) / 0.2); 
+    color: hsl(var(--element-hydrogen));
+    border-color: hsl(var(--element-hydrogen) / 0.5);
+  }
+  
+  .element-c { 
+    background: hsl(var(--element-carbon) / 0.2); 
+    color: hsl(var(--element-carbon));
+    border-color: hsl(var(--element-carbon) / 0.5);
+  }
+  
+  .element-o { 
+    background: hsl(var(--element-oxygen) / 0.2); 
+    color: hsl(var(--element-oxygen));
+    border-color: hsl(var(--element-oxygen) / 0.5);
+  }
+  
+  .element-n { 
+    background: hsl(var(--element-nitrogen) / 0.2); 
+    color: hsl(var(--element-nitrogen));
+    border-color: hsl(var(--element-nitrogen) / 0.5);
+  }
+  
+  /* Math Symbol Styling */
+  .math-symbol {
+    @apply inline-block px-1 py-0.5 rounded text-sm font-bold;
+    background: hsl(var(--accent) / 0.2);
+    color: hsl(var(--accent));
+    border: 1px solid hsl(var(--accent) / 0.5);
+    box-shadow: var(--shadow-math);
+    text-shadow: 0 0 5px hsl(var(--accent) / 0.8);
+  }
+  
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+  }
+  
+  /* Particle Animation */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--particle-trail));
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 0 6px hsl(var(--particle-trail));
+  }
+  
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0;
+    }
+    10% { 
+      opacity: 1;
+    }
+    90% { 
+      opacity: 1;
+    }
+    50% { 
+      transform: translateY(-100px) translateX(50px) scale(1.2);
+    }
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-player {
+    background: var(--gradient-player);
+  }
+}
